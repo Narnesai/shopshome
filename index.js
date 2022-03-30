@@ -73,7 +73,7 @@ app.post('/signup',(req,res)=>{
         })
 
         userToDB.save(()=>{
-            const token=jwt.sign(newUser,'hppavilionx360')
+            const token=jwt.sign(newUser,'hppavilionx360',{ expiresIn: '1d'})
             res.json({authToken:token})
         })
 
@@ -89,7 +89,7 @@ app.post('/login',(req,res)=>{
                     username:req.body.username,
                     name:data.name
                 }
-                const token=jwt.sign(newUser,'hppavilionx360')
+                const token=jwt.sign(newUser,'hppavilionx360',{ expiresIn: '1d'})
                 res.json({authToken:token}) 
             }
             else{
